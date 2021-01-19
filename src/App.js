@@ -14,7 +14,6 @@ function App() {
       {/* <Exercise3 /> */}
       {/* <Exercise4 /> */}
       <Exercise5 />
-     
     </div>
   );
 }

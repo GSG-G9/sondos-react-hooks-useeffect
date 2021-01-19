@@ -12,17 +12,18 @@ export default function Exercise3() {
 
   useEffect(() => {
     let isCancelled = false;
-    if(!isCancelled){
+    
       if(searchWord){
         fetch(`http://api.giphy.com/v1/gifs/search?q=${searchWord}&api_key=dc6zaTOxFJmzC`)
         .then(res=>res.json())
         .then(res=>{
-          if(res.data.length === 0) return setNotfound('The gif you have searched for is not found')
-          else return res.data[0].images.downsized_medium.url
-        })
+          if(!isCancelled){
+           if(res.data.length === 0) return setNotfound('The gif you have searched for is not found')
+           else return res.data[0].images.downsized_medium.url
+        }})
         .then(res=>setGif(res))
       }
-    }
+    
     return () => {
       isCancelled = true;
     }
